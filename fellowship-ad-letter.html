@@ -1,85 +1,103 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<title>CWA Executive Fellowship — Letter Ad</title>
+<html lang="en"><head><meta charset="utf-8">
+<title>CWA Executive Fellowship — Print Ad</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --coral:#E27A50; --coral-dark:#C9623B; --coral-tint:#F6E4DB; --coral-wash:#FBF0EA;
-    --navy:#1A375D; --navy-deep:#122842; --navy-tint:#3B5578; --muted:#5B6A7D; --line:#E7DFD6;
-    --ground:#FAF7F3; --white:#FFFFFF;
+    --coral:#E17950; --coral-dark:#B85A34; --navy:#1C375D; --navy-tint:#3B5578;
+    --ground:#FAF7F3; --muted:#6A7787; --line:#D9CFC4;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   @page{ size:8.5in 11in; margin:0; }
   html,body{margin:0;padding:0;background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
   body{font-family:'Sora',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif}
 
-  .ad{
-    position:relative; width:8.5in; height:11in; overflow:hidden;
-    background:var(--ground);
-    display:flex; flex-direction:column;
-    padding:0.82in 0.78in 0.66in;
-    -webkit-print-color-adjust:exact; print-color-adjust:exact;
-  }
-  .geo{position:absolute;border-radius:50%;pointer-events:none}
-  .g1{width:6.6in;height:6.6in;top:-2.5in;right:-2.2in;background:var(--coral-wash)}
-  .g2{width:2.5in;height:2.5in;bottom:-1in;left:-1in;background:var(--coral-wash)}
-  .g3{width:1.9in;height:1.9in;border:3px solid var(--coral-tint);bottom:1.2in;right:-0.55in}
-  .g4{width:0.18in;height:0.18in;background:var(--coral);top:40%;right:1in}
-  .g5{width:0.13in;height:0.13in;background:var(--navy);top:56%;left:0.6in}
-  .ad > *{position:relative;z-index:2}
+  .page{position:relative;width:8.5in;height:11in;background:var(--ground);overflow:hidden;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  /* classic keyline frame */
+  .frame{position:absolute;top:.42in;left:.42in;right:.42in;bottom:.42in;border:1px solid var(--navy)}
+  .frame::after{content:"";position:absolute;top:5px;left:5px;right:5px;bottom:5px;border:1px solid var(--coral)}
 
-  .arc{position:absolute;top:0.6in;right:0.72in;width:1.25in;height:1.25in;z-index:2;opacity:.9}
+  .inner{position:relative;height:100%;display:flex;flex-direction:column;align-items:center;text-align:center;
+    padding:1.05in .95in .9in}
 
-  .logo{height:0.95in;width:auto;display:block}
+  .fellogo{width:2.5in;height:auto;display:block}
+  .fl-coral{fill:#E17950} .fl-navy{fill:#1C375D}
 
-  .eyebrow{font-size:15px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--coral-dark);margin-top:0.5in}
-  h1{font-size:73px;line-height:1.03;font-weight:800;letter-spacing:-.03em;color:var(--navy);margin-top:20px}
+  .eyebrow{margin-top:.5in;font-size:12px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--coral-dark)}
+  h1{margin-top:.26in;font-size:57px;line-height:1.08;font-weight:800;letter-spacing:-.02em;color:var(--navy);max-width:7.1in}
   h1 .hl{color:var(--coral)}
-  .sub{font-size:23px;line-height:1.5;color:var(--navy-tint);font-weight:400;margin-top:26px;max-width:6.3in}
+  .sub{margin-top:.28in;font-size:20px;line-height:1.55;color:var(--navy-tint);font-weight:400;max-width:5.7in}
 
-  .markers{display:flex;flex-wrap:wrap;gap:12px;margin-top:auto;margin-bottom:6px}
-  .marker{display:inline-flex;align-items:center;gap:10px;background:var(--white);border:1px solid var(--line);border-radius:999px;padding:12px 20px;font-size:17px;font-weight:600;color:var(--navy)}
-  .marker .dot{width:9px;height:9px;border-radius:50%;background:var(--coral);flex:none}
+  .spacer{flex:1 1 auto;min-height:.3in}
 
-  .foot{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-top:32px;padding-top:26px;border-top:2px solid var(--line)}
-  .cta{display:inline-flex;align-items:center;gap:11px;background:var(--coral);color:#fff;font-size:20px;font-weight:700;letter-spacing:-.01em;padding:18px 32px;border-radius:999px}
-  .url{font-size:18px;font-weight:600;color:var(--navy)}
-  .url .light{color:var(--muted);font-weight:500}
-</style>
-</head>
+  .divider{width:56px;height:2px;background:var(--coral);margin:0 auto .34in}
+  .details{font-size:15px;font-weight:600;letter-spacing:.02em;color:var(--navy);line-height:1.9}
+  .details .sep{color:var(--coral);margin:0 .55em;font-weight:700}
+
+  .cta{margin-top:.5in;padding-top:.34in;border-top:1px solid var(--line);width:100%;max-width:6.4in}
+  .cta .headline{font-size:21px;font-weight:700;color:var(--navy);letter-spacing:-.01em}
+  .cta .url{margin-top:.12in;font-size:17px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--coral-dark)}
+</style></head>
 <body>
-  <div class="ad" role="img" aria-label="CWA Executive Fellowship advertisement — Introducing the next chapter in workforce leadership development.">
-    <div class="geo g1"></div>
-    <div class="geo g2"></div>
-    <div class="geo g3"></div>
-    <div class="geo g4"></div>
-    <div class="geo g5"></div>
+  <div class="page">
+    <div class="frame"></div>
+    <div class="inner">
+      <svg class="fellogo" id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 279.3 219.1">
+  
+  <defs>
+    <style>
+      .fl-coral {
+        fill: #e17950;
+      }
 
-    <svg class="arc" viewBox="0 0 150 150" aria-hidden="true"><circle cx="16.7" cy="109.0" r="3.6" fill="#E27A50"/><circle cx="10.2" cy="90.8" r="3.6" fill="#E27A50"/><circle cx="9.3" cy="71.4" r="3.6" fill="#E27A50"/><circle cx="14.1" cy="52.7" r="3.6" fill="#E27A50"/><circle cx="24.0" cy="36.1" r="3.6" fill="#E27A50"/><circle cx="38.4" cy="23.1" r="3.6" fill="#E27A50"/><circle cx="55.9" cy="14.8" r="3.6" fill="#E27A50"/><circle cx="75.0" cy="12.0" r="3.6" fill="#E27A50"/><circle cx="94.1" cy="14.8" r="3.6" fill="#E27A50"/><circle cx="111.6" cy="23.1" r="3.6" fill="#E27A50"/><circle cx="126.0" cy="36.1" r="3.6" fill="#E27A50"/><circle cx="135.9" cy="52.7" r="3.6" fill="#E27A50"/><circle cx="140.7" cy="71.4" r="3.6" fill="#E27A50"/><circle cx="139.8" cy="90.8" r="3.6" fill="#E27A50"/><circle cx="133.3" cy="109.0" r="3.6" fill="#E27A50"/><circle cx="22.8" cy="97.0" r="3.1" fill="#E27A50"/><circle cx="19.5" cy="78.0" r="3.1" fill="#E27A50"/><circle cx="22.8" cy="59.0" r="3.1" fill="#E27A50"/><circle cx="32.5" cy="42.3" r="3.1" fill="#E27A50"/><circle cx="47.3" cy="29.9" r="3.1" fill="#E27A50"/><circle cx="65.4" cy="23.3" r="3.1" fill="#E27A50"/><circle cx="84.6" cy="23.3" r="3.1" fill="#E27A50"/><circle cx="102.8" cy="29.9" r="3.1" fill="#E27A50"/><circle cx="117.5" cy="42.3" r="3.1" fill="#E27A50"/><circle cx="127.2" cy="59.0" r="3.1" fill="#E27A50"/><circle cx="130.5" cy="78.0" r="3.1" fill="#E27A50"/><circle cx="127.2" cy="97.0" r="3.1" fill="#E27A50"/></svg>
+      .fl-navy {
+        fill: #1c375d;
+      }
+    </style>
+  </defs>
+  <g>
+    <path class="fl-coral" d="M44.1,0c10.1,0,32.7,4,32.7,20.1v11.3h-19.1v-4.7c0-4.9-7.6-6.9-13.1-6.9-12.4,0-22.4,8.1-22.4,23.7s10.4,25.5,22.9,25.5,24.3-11,24.3-11l10.8,15.4s-12.9,15.4-35.5,15.4S0,69.4,0,43.6,18.7,0,44.1,0Z"/>
+    <path class="fl-coral" d="M89,22.1c-.5-2-1.4-2.6-3.3-2.6h-3V1.4h15.3c5.8,0,9.5,1.7,10.6,7l9.4,45c1.1,5.3,1.1,9,1.1,9h.2s.1-3.7,1.4-9L133.7,1.6h17l12.9,51.9c1.3,5.3,1.4,9,1.4,9h.2s0-3.7,1.1-9l9.4-45c1.1-5.3,4.6-7,10.6-7h15.3v18.1h-3c-1.9,0-2.9.6-3.3,2.6l-16.2,65.3h-24.4l-10.7-40.1c-1.5-5.5-1.7-9.1-1.7-9.1h-.2s-.1,3.6-1.7,9.1l-10.7,40.1h-24.4l-16.2-65.3Z"/>
+    <path class="fl-coral" d="M194.1,69.4h2.3c1.9,0,2.5-.6,3.2-2.6L222.8,1.4h22.2l23.2,65.3c.7,2,1.3,2.6,3.2,2.6h2.3v18.1h-13.7c-6,0-8.3-1.8-10-7l-3.7-11.1h-24.8l-3.7,11.1c-1.7,5.2-4.1,7-10,7h-13.7v-18.1ZM241.8,52l-4.3-14.3c-1.7-5.4-3.5-14.2-3.5-14.2h-.2s-1.8,8.8-3.5,14.2l-4.3,14.3h15.7Z"/>
+  </g>
+  <g>
+    <path class="fl-navy" d="M2.1,129.3c0-9.6,6.2-16.2,15.2-16.2s14.9,6.1,14.9,15.6v2.3H9.3c.6,5.4,3.4,8.1,8.4,8.1s6.9-1.6,7.7-4.5h7c-1.3,6.7-6.9,10.7-14.8,10.7s-15.4-6.6-15.4-16ZM9.4,126.3h15.3c0-4.2-2.9-7-7.4-7s-7.2,2.4-7.9,7Z"/>
+    <path class="fl-navy" d="M34.6,144.5l10.5-14.9-10.5-15.6h8.8l6.7,10.4,6.5-10.4h8.5l-10.4,15.4,10.1,15.1h-8.6l-6.5-10.1-6.4,10.1h-8.6Z"/>
+    <path class="fl-navy" d="M67.3,129.3c0-9.6,6.2-16.2,15.2-16.2s14.9,6.1,14.9,15.6v2.3h-23c.6,5.4,3.4,8.1,8.4,8.1s6.9-1.6,7.7-4.5h7c-1.3,6.7-6.9,10.7-14.8,10.7s-15.4-6.6-15.4-16ZM74.6,126.3h15.3c0-4.2-2.9-7-7.4-7s-7.2,2.4-7.9,7Z"/>
+    <path class="fl-navy" d="M117.8,113.1c8.3,0,14,4.6,14.8,12h-7.5c-.9-3.5-3.4-5.2-7-5.2s-8,3.6-8,9.4,3,9.3,7.8,9.3,6.4-1.9,7.2-5.2h7.6c-.9,7.1-6.9,12-14.8,12s-15.3-6.4-15.3-16.1,6.2-16.1,15.2-16.1Z"/>
+    <path class="fl-navy" d="M167.4,114v30.5h-7l-.6-4.1c-1.9,2.9-5.8,4.9-9.9,4.9-7,0-11.2-4.8-11.2-12.2v-19.1h7.5v16.4c0,5.8,2.3,8.1,6.5,8.1s7-2.8,7-8.6v-16h7.5Z"/>
+    <path class="fl-navy" d="M179,144.5v-24.2h-5.9v-6.3h5.9v-9.5h7.5v9.5h5.9v6.3h-5.9v24.2h-7.5Z"/>
+    <path class="fl-navy" d="M197.2,103.4c0-2.5,2-4.5,4.6-4.5s4.5,2,4.5,4.5-2,4.6-4.5,4.6-4.6-2-4.6-4.6ZM198,114h7.5v30.5h-7.5v-30.5Z"/>
+    <path class="fl-navy" d="M210.8,114h8l5.3,14c1.3,3.6,2.3,6.8,2.7,8.5.4-1.9,1.5-5.1,2.8-8.5l5.6-14h7.8l-12.7,30.5h-7.4l-12.1-30.5Z"/>
+    <path class="fl-navy" d="M245,129.3c0-9.6,6.2-16.2,15.2-16.2s14.9,6.1,14.9,15.6v2.3h-23c.6,5.4,3.4,8.1,8.4,8.1s6.9-1.6,7.7-4.5h7c-1.3,6.7-6.9,10.7-14.8,10.7s-15.4-6.6-15.4-16ZM252.4,126.3h15.3c0-4.2-2.9-7-7.4-7s-7.2,2.4-7.9,7Z"/>
+    <path class="fl-navy" d="M5.2,173.6v-3.7c0-8.3,4.4-11.7,11-11.7s2.6,0,3.9.3v6.4h-2.7c-3.8,0-4.8,2-4.8,5v3.7h7.3v6.3h-7.3v24.2h-7.5v-24.2H.9v-6.3h4.4Z"/>
+    <path class="fl-navy" d="M21.2,188.8c0-9.6,6.2-16.2,15.2-16.2s14.9,6.1,14.9,15.6v2.3h-23c.6,5.4,3.4,8.1,8.4,8.1s6.9-1.6,7.7-4.5h7c-1.3,6.7-6.9,10.7-14.8,10.7s-15.4-6.6-15.4-16ZM28.5,185.8h15.3c0-4.2-2.9-7-7.4-7s-7.2,2.4-7.9,7Z"/>
+    <path class="fl-navy" d="M56.5,204.1v-45.9h7.5v45.9h-7.5Z"/>
+    <path class="fl-navy" d="M71.1,204.1v-45.9h7.5v45.9h-7.5Z"/>
+    <path class="fl-navy" d="M100,172.7c9.4,0,16.3,6.5,16.3,16s-6.9,16-16.3,16-16.3-6.5-16.3-16,6.9-16,16.3-16ZM100,198.1c5.2,0,8.8-3.8,8.8-9.3s-3.6-9.3-8.8-9.3-8.8,3.8-8.8,9.3,3.6,9.3,8.8,9.3Z"/>
+    <path class="fl-navy" d="M116.8,173.6h7.8l4,13.1c.7,2.4,1.3,5.1,1.9,7.9.6-3,1.1-4.9,2.1-7.9l4.2-13.1h7.7l4.1,13.1c.4,1.2,1.6,5.8,2,7.8.5-2.3,1.5-5.9,2-7.8l4.1-13.1h8l-10.6,30.5h-7l-4.2-13.2c-1.2-4-1.9-6.9-2.2-8.5-.3,1.4-.9,3.6-2.4,8.6l-4.2,13.1h-7.3l-9.9-30.5Z"/>
+    <path class="fl-navy" d="M172.3,194.8c0,2.7,2,4.3,5.5,4.3s5.4-1.4,5.4-3.6-.8-2.7-3.5-3.3l-5.5-1.3c-5.5-1.2-8.1-3.8-8.1-8.7s5.1-9.6,12.1-9.6,11.5,4,11.5,9.9h-7.2c0-2.6-1.8-4.3-4.7-4.3s-4.7,1.4-4.7,3.6,1.4,2.8,4,3.5l5.5,1.3c5.1,1.2,7.7,3.5,7.7,8.2s-5.2,10-12.8,10-12.4-4.1-12.4-10.1h7.2Z"/>
+    <path class="fl-navy" d="M195.1,204.1v-45.9h7.6v19.4c1.9-3,5.5-4.9,9.9-4.9,7.5,0,11.5,4.8,11.5,12.7v18.8h-7.5v-17c0-5.1-2.5-7.6-6.4-7.6s-7.5,3.3-7.5,7.9v16.7h-7.5Z"/>
+    <path class="fl-navy" d="M229.7,162.9c0-2.5,2-4.5,4.6-4.5s4.5,2,4.5,4.5-2,4.6-4.5,4.6-4.6-2-4.6-4.6ZM230.6,173.6h7.5v30.5h-7.5v-30.5Z"/>
+    <path class="fl-navy" d="M244.9,173.6h7l.5,4.6c1.9-3.5,5.9-5.6,10.5-5.6,8.6,0,14.3,6.2,14.3,15.8s-5.2,16.4-14.3,16.4-8.5-1.8-10.4-4.9v18.2h-7.5v-44.6ZM261.1,198.1c5.3,0,8.5-3.8,8.5-9.3s-3.1-9.3-8.5-9.3-8.6,3.8-8.6,9.3,3.4,9.3,8.6,9.3Z"/>
+  </g>
+</svg>
+      <div class="eyebrow">A Program of the California Workforce Association</div>
+      <h1>Introducing the <span class="hl">next chapter</span> in workforce leadership development.</h1>
+      <p class="sub">A year-long, cohort-based fellowship for California's new and established workforce executives — board governance, systems leadership, and a peer network that lasts a career.</p>
 
-    <img class="logo" alt="CWA Executive Fellowship" src="data:image/png;base64,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">
+      <div class="spacer"></div>
 
-    <span class="eyebrow">A program of the California Workforce Association</span>
-    <h1>Introducing the <span class="hl">next chapter</span> in workforce leadership development.</h1>
-    <p class="sub">A year-long, cohort-based fellowship for California's new and established workforce executives — board governance, systems leadership, and a peer network you'll lean on for years.</p>
+      <div class="divider"></div>
+      <div class="details">January&nbsp;–&nbsp;September<span class="sep">·</span>Cohort of ~20 Fellows<span class="sep">·</span>Led by Adam Peck &amp; Tim Aldinger</div>
 
-    <div class="markers">
-      <span class="marker"><span class="dot"></span>January – September</span>
-      <span class="marker"><span class="dot"></span>Cohort of ~20 fellows</span>
-      <span class="marker"><span class="dot"></span>Led by Adam Peck &amp; Tim Aldinger</span>
-    </div>
-
-    <div class="foot">
-      <span class="cta">Apply for the 2027 Cohort →</span>
-      <!-- URL: swap for the exact fellowship link before publishing -->
-      <span class="url">calworkforce.org<span class="light">/fellowship</span></span>
+      <div class="cta">
+        <div class="headline">Applications for the 2027 cohort are now open.</div>
+        <div class="url">Apply at calworkforce.org/fellowship</div>
+      </div>
     </div>
   </div>
-
-
-</body>
-</html>
+</body></html>
