@@ -99,8 +99,43 @@
   .lockup{display:flex;flex-direction:column;line-height:1;letter-spacing:-.01em}
   .lockup .cwa{font-weight:800;font-size:1.35rem;color:var(--coral);letter-spacing:.02em}
   .lockup .ef{font-weight:500;font-size:.82rem;color:var(--navy);text-transform:lowercase;letter-spacing:.02em;margin-top:3px}
-  .logo-img{height:48px;width:auto;display:block}
-  .site .btn{padding:12px 24px;font-size:.92rem}
+  .logo-img{height:54px;width:auto;display:block}
+  .site .btn{padding:11px 22px;font-size:.9rem}
+  /* Shared nav (dropdowns) */
+  .nav{display:flex;align-items:center;gap:30px}
+  .nav a.navlink{font-size:.95rem;font-weight:500;color:var(--navy);transition:color .2s;position:relative}
+  .nav a.navlink:hover,.nav a.navlink.active{color:var(--coral-dark)}
+  .nav a.navlink::after{content:"";position:absolute;left:0;right:100%;bottom:-6px;height:2px;background:var(--coral);transition:right .25s var(--ease)}
+  .nav a.navlink:hover::after,.nav a.navlink.active::after{right:0}
+  .nav-item{position:relative;display:flex;align-items:center}
+  .subtoggle{font-family:inherit;background:none;border:none;cursor:pointer;font-size:.95rem;font-weight:500;color:var(--navy);display:inline-flex;align-items:center;gap:6px;padding:0;transition:color .2s}
+  .subtoggle:hover,.has-sub:focus-within .subtoggle{color:var(--coral-dark)}
+  .subtoggle .caret{font-size:.66rem;color:var(--coral-dark);transition:transform .2s var(--ease)}
+  .has-sub:hover .caret,.subtoggle[aria-expanded="true"] .caret{transform:rotate(180deg)}
+  .submenu{position:absolute;top:calc(100% + 16px);left:50%;transform:translateX(-50%) translateY(6px);min-width:210px;background:var(--white);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:8px;opacity:0;visibility:hidden;transition:opacity .2s var(--ease),transform .2s var(--ease);z-index:70}
+  .submenu::before{content:"";position:absolute;top:-16px;left:0;right:0;height:16px}
+  .has-sub:hover .submenu,.has-sub:focus-within .submenu,.submenu.open{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+  .submenu a{display:block;padding:11px 14px;border-radius:9px;font-size:.92rem;font-weight:500;color:var(--navy);transition:background .18s,color .18s}
+  .submenu a:hover{background:var(--coral-wash);color:var(--coral-dark)}
+  .navtoggle{display:none;background:none;border:1.5px solid var(--line);border-radius:10px;padding:9px 11px;cursor:pointer}
+  .navtoggle span{display:block;width:20px;height:2px;background:var(--navy);margin:4px 0;border-radius:2px}
+  @media (max-width:900px){
+    .nav{position:fixed;inset:64px 0 auto 0;flex-direction:column;align-items:stretch;gap:0;background:var(--ground);border-bottom:1px solid var(--line);padding:8px 24px 20px;transform:translateY(-140%);transition:transform .3s var(--ease);box-shadow:var(--shadow);z-index:55}
+    .nav.open{transform:translateY(0)}
+    .nav a.navlink{padding:14px 0;border-bottom:1px solid var(--line)}
+    .nav a.navlink::after{display:none}
+    .nav .btn{margin-top:14px;justify-content:center}
+    .navtoggle{display:block}
+    .nav-item{display:block}
+    .subtoggle{width:100%;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--line);font-size:1rem;font-weight:500}
+    .submenu{position:static;transform:none;opacity:1;visibility:hidden;display:none;min-width:0;background:transparent;border:none;box-shadow:none;padding:0 0 0 14px}
+    .submenu::before{display:none}
+    .submenu.open{display:block;visibility:visible}
+    .submenu a{padding:13px 0;border-bottom:1px solid var(--line)}
+  }
+  /* Program logo in hero */
+  .hero .fellogo-hero{height:112px;width:auto;display:block;margin-bottom:22px}
+  @media (max-width:640px){ .hero .fellogo-hero{height:84px} }
 
   /* Hero */
   .hero{position:relative;padding:88px 0 96px;overflow:hidden}
@@ -172,13 +207,13 @@
     content:"";position:absolute;top:26px;left:12%;right:12%;height:2px;
     background:linear-gradient(90deg,var(--coral-tint),var(--coral),var(--coral-tint));z-index:0;
   }
-  .tl-item{position:relative;padding:0 16px;z-index:1;text-align:center}
+  .tl-item{position:relative;padding:0 16px;z-index:1;text-align:center;display:flex;flex-direction:column}
   .tl-node{
     width:54px;height:54px;border-radius:50%;background:var(--white);border:2px solid var(--coral);
     display:grid;place-items:center;margin:0 auto 22px;font-weight:700;color:var(--coral-dark);
     box-shadow:0 0 0 6px var(--navy-wash);position:relative;
   }
-  .tl-card{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:22px 20px;box-shadow:var(--shadow-sm);text-align:left;height:100%}
+  .tl-card{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:22px 20px;box-shadow:var(--shadow-sm);text-align:left;flex:1;width:100%}
   .tl-when{font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--coral-dark)}
   .tl-card h3{font-size:1.05rem;margin:8px 0 8px}
   .tl-card p{font-size:.9rem}
@@ -336,10 +371,44 @@
 <!-- ============ HEADER ============ -->
 <header class="site">
   <div class="wrap">
-    <a class="lockup" href="#top" aria-label="CWA Executive Fellowship home">
-      <img class="logo-img" src="assets/logo.png" alt="CWA Executive Fellowship">
+    <a class="lockup" href="index.html" aria-label="California Workforce Association home">
+      <img class="logo-img" src="assets/logo-primary.svg" alt="California Workforce Association">
     </a>
-    <a class="btn btn-primary" href="#apply">Apply <span class="btn-arrow" aria-hidden="true">→</span></a>
+    <button class="navtoggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav"><span></span><span></span><span></span></button>
+    <nav class="nav" id="primary-nav" aria-label="Primary">
+      <div class="nav-item has-sub">
+        <button class="subtoggle" aria-expanded="false" aria-haspopup="true" aria-controls="submenu-about">About Us <span class="caret" aria-hidden="true">▾</span></button>
+        <div class="submenu" id="submenu-about" role="menu" aria-label="About Us">
+          <a role="menuitem" href="vision.html">Our Vision</a>
+          <a role="menuitem" href="team.html">Our Team</a>
+          <a role="menuitem" href="board.html">Our Board</a>
+          <a role="menuitem" href="contact.html">Contact Us</a>
+        </div>
+      </div>
+      <a class="navlink" href="advocacy.html">Advocacy</a>
+      <div class="nav-item has-sub">
+        <button class="subtoggle" aria-expanded="false" aria-haspopup="true" aria-controls="submenu-members">Our Members <span class="caret" aria-hidden="true">▾</span></button>
+        <div class="submenu" id="submenu-members" role="menu" aria-label="Our Members">
+          <a role="menuitem" href="local-boards.html">Boards</a>
+          <a role="menuitem" href="affiliates.html">Affiliates</a>
+        </div>
+      </div>
+      <div class="nav-item has-sub">
+        <button class="subtoggle" aria-expanded="false" aria-haspopup="true" aria-controls="submenu-conferences">Conferences <span class="caret" aria-hidden="true">▾</span></button>
+        <div class="submenu" id="submenu-conferences" role="menu" aria-label="Conferences">
+          <a role="menuitem" href="meeting-of-the-minds.html">Meeting of the Minds</a>
+          <a role="menuitem" href="workcon.html">Workcon</a>
+        </div>
+      </div>
+      <div class="nav-item has-sub">
+        <button class="subtoggle" aria-expanded="false" aria-haspopup="true" aria-controls="submenu-resources">Resources <span class="caret" aria-hidden="true">▾</span></button>
+        <div class="submenu" id="submenu-resources" role="menu" aria-label="Resources">
+          <a role="menuitem" href="self-sufficiency-calculator.html">Self-Sufficiency Calculator</a>
+        </div>
+      </div>
+      <a class="navlink active" href="fellowship.html">Executive Fellowship</a>
+      <a class="btn btn-primary" href="contact.html">Contact Us <span class="btn-arrow" aria-hidden="true">→</span></a>
+    </nav>
   </div>
 </header>
 
@@ -352,9 +421,10 @@
   <div class="geo g3" aria-hidden="true"></div>
   <div class="geo g4" aria-hidden="true"></div>
   <div class="wrap">
+    <img class="fellogo-hero reveal" src="assets/fellowship-logo.svg" alt="CWA Executive Fellowship">
     <span class="eyebrow reveal">A program of the California Workforce Association</span>
     <h1 id="hero-h" class="reveal d1">Where California's<br>workforce leaders<br>are <span class="hl">made</span>.</h1>
-    <p class="lead reveal d2">A year-long, cohort-based fellowship for new and established workforce executives — led by CWA Executive Director Adam Peck and Tim Aldinger.</p>
+    <p class="lead reveal d2">A nine-month, cohort-based fellowship for new and established workforce executives — led by CWA Executive Director Adam Peck and Tim Aldinger.</p>
     <div class="hero-cta reveal d3">
       <a class="btn btn-primary" href="#apply">Apply for the 2027 Cohort <span class="btn-arrow" aria-hidden="true">→</span></a>
       <a class="linkarrow" href="#experience">Explore the experience <span aria-hidden="true">↓</span></a>
@@ -423,8 +493,8 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow">The experience</span>
-      <h2 id="exp-h">A year in four sessions.</h2>
-      <p>Four in-person gatherings across California anchor the year. Between them, the real work happens — in your own organization, with your cohort.</p>
+      <h2 id="exp-h">Nine months, four sessions.</h2>
+      <p>Four in-person gatherings across California anchor the program. Between them, the real work happens — in your own organization, with your cohort.</p>
     </div>
     <div class="timeline">
       <div class="tl-item reveal">
@@ -456,7 +526,7 @@
         <div class="tl-card">
           <span class="tl-when">September · Monterey</span>
           <h3>Capstone</h3>
-          <p>Capstone Presentations, connected to the Meeting of the Minds conference — your year, delivered to your peers.</p>
+          <p>Capstone Presentations, connected to the Meeting of the Minds conference — your work, delivered to your peers.</p>
         </div>
       </div>
     </div>
@@ -654,15 +724,14 @@
     <div>
       <div class="lockup">
         <span class="cwa">CWA</span>
-        <span class="ef">executive fellowship</span>
+        <span class="ef">california workforce association</span>
       </div>
-      <p class="tag" style="margin-top:10px">A program of the California Workforce Association.</p>
+      <p class="tag" style="margin-top:10px">The champion of California's local workforce boards.</p>
     </div>
     <nav aria-label="Footer">
-      <!-- placeholder links -->
-      <a href="#">CWA Home</a>
-      <a href="#">Contact</a>
-      <a href="#">Privacy</a>
+      <a href="index.html">Home</a>
+      <a href="advocacy.html">Advocacy</a>
+      <a href="contact.html">Contact</a>
     </nav>
   </div>
 </footer>
@@ -681,6 +750,25 @@
       });
     },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
     els.forEach(function(e){io.observe(e)});
+  })();
+  // Mobile nav
+  (function(){
+    var t=document.querySelector('.navtoggle'),n=document.getElementById('primary-nav');
+    if(!t)return;
+    t.addEventListener('click',function(){var o=n.classList.toggle('open');t.setAttribute('aria-expanded',o);});
+    n.addEventListener('click',function(e){if(e.target.closest('a')){n.classList.remove('open');t.setAttribute('aria-expanded','false');}});
+  })();
+  // Dropdown submenus
+  (function(){
+    var items=[].slice.call(document.querySelectorAll('.has-sub'));
+    function closeAll(except){items.forEach(function(it){if(it!==except){it.querySelector('.submenu').classList.remove('open');it.querySelector('.subtoggle').setAttribute('aria-expanded','false');}});}
+    items.forEach(function(it){
+      var btn=it.querySelector('.subtoggle'),menu=it.querySelector('.submenu');
+      if(!btn||!menu)return;
+      btn.addEventListener('click',function(e){e.stopPropagation();var open=menu.classList.toggle('open');btn.setAttribute('aria-expanded',open);closeAll(it);});
+    });
+    document.addEventListener('click',function(e){if(!e.target.closest('.has-sub'))closeAll(null);});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')closeAll(null);});
   })();
 </script>
 </body>
