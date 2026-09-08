@@ -285,56 +285,6 @@
   </div>
 </section>
 
-<!-- ============ 2. ROTATOR — WORKFORCE NEWS & EVENTS ============ -->
-<section class="rotator-sec" id="news" aria-labelledby="news-h" aria-roledescription="carousel">
-  <div class="wrap">
-    <div class="rot-head">
-      <div class="sec-head reveal">
-        <span class="eyebrow">News and Updates</span>
-        <h2 id="news-h">What's happening across the field</h2>
-        <p>Policy that matters, moments to gather, and news from the boards moving California's workforce forward.</p>
-      </div>
-      <div class="rot-controls reveal d1">
-        <button class="rot-btn" id="rotPrev" aria-label="Previous"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
-        <button class="rot-btn" id="rotNext" aria-label="Next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
-      </div>
-    </div>
-    <div class="rot-filters reveal" role="group" aria-label="Filter news and updates">
-      <button class="rot-filter" data-filter="all" aria-pressed="true">All</button>
-      <button class="rot-filter" data-filter="news" aria-pressed="false">News</button>
-      <button class="rot-filter" data-filter="policy" aria-pressed="false">Policy</button>
-      <button class="rot-filter" data-filter="event" aria-pressed="false">Events</button>
-      <button class="rot-filter" data-filter="career" aria-pressed="false">Career Opportunities</button>
-    </div>
-    <div class="rot-viewport reveal">
-      <div class="rot-track" id="rotTrack" tabindex="0" aria-live="polite" aria-label="Workforce news and events">
-        <!-- Real content. data-cat drives the News and Updates filters. VERIFY links/dates before launch. -->
-        <!-- Card 1 — Meeting of the Minds -->
-        <article class="rot-card" data-cat="event">
-          <div class="rot-thumb"><span class="chip event">Event</span></div>
-          <div class="rot-body"><div class="rot-date">September 8–10, 2026 · Monterey</div><h3>Meeting of the Minds is here</h3><p>California's premier workforce gathering is happening now in Monterey — three days of practice and policy, with new Super Sessions on AI, HR 1, and apprenticeships. Registration is still open.</p><a class="linkarrow" href="https://mmm.calworkforce.org/" target="_blank" rel="noopener">Register now <span aria-hidden="true">→</span></a></div>
-        </article>
-        <!-- Card 2 — Job opportunity (from CWA Today, Aug 10 2026). VERIFY still open. -->
-        <article class="rot-card" data-cat="career">
-          <div class="rot-thumb"><span class="chip career">Careers</span></div>
-          <div class="rot-body"><div class="rot-date">Now hiring · Chico, CA</div><h3>Executive Director — NoRTEC Workforce Development Board</h3><p>Lead workforce development across an 11-county Northern California region — WIOA-funded programs, 13 America's Job Centers, and partnerships with employers and educators. Salary $140,000–$180,000.</p><a class="linkarrow" href="https://www.ncen.org/images/documents/misc/Executive%20Director%20Job%20Announcement.pdf" target="_blank" rel="noopener">View &amp; apply <span aria-hidden="true">→</span></a></div>
-        </article>
-        <!-- Card 3 — Executive Fellowship -->
-        <article class="rot-card" data-cat="event">
-          <div class="rot-thumb"><span class="chip event">Event</span></div>
-          <div class="rot-body"><div class="rot-date">2027 cohort</div><h3>Apply to the CWA Executive Fellowship</h3><p>A year-long, cohort-based leadership program for California's workforce executives — board governance, systems leadership, and a peer network you'll lean on for years.</p><a class="linkarrow" href="https://cwa-executive-fellowship.netlify.app/" target="_blank" rel="noopener">Explore the Fellowship <span aria-hidden="true">→</span></a></div>
-        </article>
-        <!-- Card 4 — News (from CWA Today, Aug 24 2026) -->
-        <article class="rot-card" data-cat="news">
-          <div class="rot-thumb"><span class="chip">News</span></div>
-          <div class="rot-body"><div class="rot-date">August 2026</div><h3>California launches a statewide Workforce Pell taskforce</h3><p>A six-month state taskforce will guide how California implements the new federal Workforce Pell Grant — expanding aid for short-term, job-focused training.</p><a class="linkarrow" href="https://www.csac.ca.gov/sites/default/files/2026-08/wfp-taskforce-press-release_08.20.26.pdf" target="_blank" rel="noopener">Read more <span aria-hidden="true">→</span></a></div>
-        </article>
-      </div>
-    </div>
-    <div class="rot-dots" id="rotDots" role="tablist" aria-label="Slides"></div>
-  </div>
-</section>
-
 <!-- ============ 3. WHO WE ARE — DRIVING WORKFORCE INNOVATION ============ -->
 <section id="who" aria-labelledby="who-h">
   <div class="wrap">
@@ -443,52 +393,6 @@
     });
     document.addEventListener('click',function(e){if(!e.target.closest('.has-sub'))closeAll(null);});
     document.addEventListener('keydown',function(e){if(e.key==='Escape')closeAll(null);});
-  })();
-
-  // Rotator / carousel with category filters
-  (function(){
-    var track=document.getElementById('rotTrack');
-    if(!track)return;
-    var allCards=[].slice.call(track.querySelectorAll('.rot-card')),
-        prev=document.getElementById('rotPrev'),
-        next=document.getElementById('rotNext'),
-        dotsWrap=document.getElementById('rotDots'),
-        filters=[].slice.call(document.querySelectorAll('.rot-filter')),
-        reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches,
-        timer=null;
-    function visible(){return allCards.filter(function(c){return c.style.display!=='none';});}
-    function step(){var vis=visible();if(!vis.length)return 1;var g=parseFloat(getComputedStyle(track).columnGap)||24;return vis[0].getBoundingClientRect().width+g;}
-    function perView(){return Math.max(1,Math.round(track.clientWidth/step()));}
-    function maxIndex(){return Math.max(0,visible().length-perView());}
-    function current(){return Math.round(track.scrollLeft/step());}
-    function go(i){i=Math.max(0,Math.min(i,maxIndex()));track.scrollTo({left:i*step(),behavior:reduce?'auto':'smooth'});}
-    function sync(){var c=current();[].slice.call(dotsWrap.children).forEach(function(d,i){d.setAttribute('aria-current',i===c?'true':'false');});}
-    function buildDots(){
-      dotsWrap.innerHTML='';
-      var pages=maxIndex()+1;
-      if(pages<=1){dotsWrap.style.display='none';return;}
-      dotsWrap.style.display='';
-      for(var i=0;i<pages;i++){(function(i){var b=document.createElement('button');b.className='rot-dot';b.setAttribute('role','tab');b.setAttribute('aria-label','Go to slide '+(i+1));b.addEventListener('click',function(){go(i);});dotsWrap.appendChild(b);})(i);}
-      sync();
-    }
-    function applyFilter(cat){
-      allCards.forEach(function(c){c.style.display=(cat==='all'||c.getAttribute('data-cat')===cat)?'':'none';});
-      filters.forEach(function(f){f.setAttribute('aria-pressed',f.getAttribute('data-filter')===cat?'true':'false');});
-      track.scrollTo({left:0,behavior:'auto'});
-      buildDots();
-    }
-    track.addEventListener('scroll',function(){window.requestAnimationFrame(sync);},{passive:true});
-    next.addEventListener('click',function(){go(current()>=maxIndex()?0:current()+1);});
-    prev.addEventListener('click',function(){go(current()<=0?maxIndex():current()-1);});
-    filters.forEach(function(f){f.addEventListener('click',function(){applyFilter(f.getAttribute('data-filter'));play();});});
-    // autoplay (only when there's more than one page)
-    function play(){if(reduce)return;stop();timer=setInterval(function(){if(maxIndex()<=0)return;go(current()>=maxIndex()?0:current()+1);},5000);}
-    function stop(){if(timer){clearInterval(timer);timer=null;}}
-    ['mouseenter','focusin','pointerdown'].forEach(function(ev){track.addEventListener(ev,stop);});
-    ['mouseleave','focusout'].forEach(function(ev){track.addEventListener(ev,play);});
-    applyFilter('all');
-    play();
-    window.addEventListener('resize',buildDots);
   })();
 </script>
 </body>
