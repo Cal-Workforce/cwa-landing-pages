@@ -1,15 +1,19 @@
-# CWA Executive Fellowship — Landing Page
+# CWA Landing Pages
 
-A single-file, standalone landing page for the **CWA Executive Fellowship**, the California Workforce Association's year-long leadership program for workforce development executives.
+Standalone, single-file landing pages for the **California Workforce Association**.
+Each page is self-contained (CSS/JS inline, assets inlined or in `assets/`) with no
+build step. Deployed as static files (see `netlify.toml`).
 
-- `index.html` — the entire page (all CSS and JS inline).
-- `assets/logo.png` — the CWA Executive Fellowship logo used in the header.
+## Pages
 
-No build step. Deployed as static files (see `netlify.toml`).
+- `executive-fellowship.html` — landing page for the **CWA Executive Fellowship**, the
+  year-long leadership program for workforce development executives.
+- `webinars.html` — registration landing page for the **California AI Blueprint Design
+  Session** webinar (CWA brand; registration CTAs link to Zoom).
 
-## Placeholders to replace before launch
+## Executive Fellowship — placeholders to replace before launch
 
-Search `index.html` for these HTML comments:
+Search `executive-fellowship.html` for these HTML comments:
 
 - `<!-- VERIFY BIO -->` — draft bios for Adam Peck and Tim Aldinger.
 - `<!-- PLACEHOLDER TESTIMONIAL -->` — alumni quotes.
